@@ -25,7 +25,7 @@ export default function FoodPage() {
     useEffect(() => {
         const fetchFoodItems = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/products/');
+                const response = await fetch('https://loja-online-back.onrender.com/api/products/');
                 if (response.ok) {
                     const data: FoodItem[] = await response.json();
                     

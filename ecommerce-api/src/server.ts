@@ -15,7 +15,7 @@ const server = express();
 server.use(express.json());
 
 server.use(cors({
-  origin: ['http://localhost:3000', 'http://outro-endereco.com']
+  origin: ['http://localhost:3000', 'https://loja-online-umber.vercel.app/']
 }));
 server.get('/', (req, res) => {
     res.json({

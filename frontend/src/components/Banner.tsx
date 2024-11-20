@@ -19,7 +19,7 @@ const Banner: React.FC = () => {
   useEffect(() => {
     const fetchSlides = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/slides");
+        const response = await axios.get("https://loja-online-back.onrender.com/slides");
         setSlides(response.data);
       } catch (error) {
         console.error("Erro ao buscar os slides:", error);
