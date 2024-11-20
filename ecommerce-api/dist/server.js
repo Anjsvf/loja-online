@@ -16,7 +16,7 @@ const prisma = new client_1.PrismaClient();
 const server = (0, express_1.default)();
 server.use(express_1.default.json());
 server.use((0, cors_1.default)({
-    origin: ['http://localhost:3000', 'https://loja-online-umber.vercel.app/']
+    origin: ['https://loja-online-umber.vercel.app/', 'https://loja-online-umber.vercel.app/']
 }));
 server.get('/', (req, res) => {
     res.json({
