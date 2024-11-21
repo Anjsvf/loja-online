@@ -37,14 +37,16 @@ const ProductItem: React.FC<ProductProps> = ({ product }) => {
 
       {/* Imagem do produto */}
       <div className={`w-full h-48 relative ${loading ? "opacity-0" : "opacity-100"}`}>
-        <Image
-          src={imageUrl}
-          alt={product.name}
-          layout="fill"
-          objectFit="contain"
-          className="rounded-md transition-opacity duration-300"
-          onLoadingComplete={() => setLoading(false)}
-        />
+      <Image
+  src={imageUrl}
+  alt={product.name}
+  layout="fill"
+  objectFit="contain"
+  className="rounded-md transition-opacity duration-300"
+  unoptimized
+  onLoadingComplete={() => setLoading(false)}
+/>
+
       </div>
 
       {/* Desconto */}
