@@ -41,6 +41,7 @@ const ProductList: React.FC = () => {
         setFilteredProducts(shuffledProducts);
       } else {
         console.error("Erro: os dados recebidos não são um array.");
+        console.error("Dados recebidos:", data);
       }
 
     } catch (error) {
