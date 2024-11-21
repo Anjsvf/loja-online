@@ -31,10 +31,18 @@ const ProductList: React.FC = () => {
     try {
       const response = await fetch("https://loja-online-back.onrender.com/api/products/");
       if (!response.ok) throw new Error("Erro ao buscar produtos.");
+      
       const data = await response.json();
-      const shuffledProducts = data.sort(() => Math.random() - 0.5);
-      setProducts(shuffledProducts);
-      setFilteredProducts(shuffledProducts);
+
+      // Verifique se 'data' é um array antes de aplicar .sort
+      if (Array.isArray(data)) {
+        const shuffledProducts = data.sort(() => Math.random() - 0.5);
+        setProducts(shuffledProducts);
+        setFilteredProducts(shuffledProducts);
+      } else {
+        console.error("Erro: os dados recebidos não são um array.");
+      }
+
     } catch (error) {
       console.error(error);
     } finally {
