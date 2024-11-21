@@ -20,8 +20,8 @@ const ProductItem: React.FC<ProductProps> = ({ product }) => {
   // Cálculo do preço com desconto
   const discountedPrice = product.price * (1 - product.discount / 100);
 
-  // Construção da URL da imagem
-  const imageUrl = `https://loja-online-back.onrender.com/${product.imageUrl}`;
+  // Construção da URL da imagem sem barras extras
+  const imageUrl = `https://loja-online-back.onrender.com${product.imageUrl.startsWith('/') ? '' : '/'}${product.imageUrl}`;
 
   // Adicionando log para verificar a URL da imagem
   console.log("URL da imagem:", imageUrl);
