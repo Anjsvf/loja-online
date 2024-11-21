@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Serviço para a aplicação
+  app:
+    build: .
+    container_name: ecommerce-api
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://api_kxof_user:svcFRviKxzw1bdtASRP1cwuHDsQzqzP3@db:5432/api_kxof
+      - JWT_SECRET=salamargo
+      - STRIPE_SECRET_KEY=sua_chave_secreta_do_stripe
+    depends_on:
+      - db
+    networks:
+      - loja_network
+
+  # Serviço para o banco de dados PostgreSQL
+  db:
+    image: postgres:13
+    container_name: loja_online_db
+    environment:
+      - POSTGRES_USER=api_kxof_user
+      - POSTGRES_PASSWORD=svcFRviKxzw1bdtASRP1cwuHDsQzqzP3
+      - POSTGRES_DB=api_kxof
+    ports:
+      - "5432:5432"
+    networks:
+      - loja_network
+
+# Defina a rede para os containers
+networks:
+  loja_network:
+    driver: bridge
