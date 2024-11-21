@@ -15,7 +15,7 @@ const server = express();
 server.use(express.json());
 
 server.use(cors({
-  origin: ['https://loja-online-umber.vercel.app/', 'https://loja-online-umber.vercel.app/']
+  origin: ['https://loja-online-umber.vercel.app', 'https://loja-online-umber.vercel.app'],
 }));
 server.get('/', (req, res) => {
     res.json({
