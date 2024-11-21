@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { FaSpinner } from "react-icons/fa";
 
@@ -20,6 +20,12 @@ const ProductItem: React.FC<ProductProps> = ({ product }) => {
   // Cálculo do preço com desconto
   const discountedPrice = product.price * (1 - product.discount / 100);
 
+  // Construção da URL da imagem
+  const imageUrl = `https://loja-online-back.onrender.com/${product.imageUrl}`;
+
+  // Adicionando log para verificar a URL da imagem
+  console.log("URL da imagem:", imageUrl);
+
   return (
     <div className="relative bg-white rounded-lg shadow-lg p-4">
       {/* Spinner de carregamento */}
@@ -32,7 +38,7 @@ const ProductItem: React.FC<ProductProps> = ({ product }) => {
       {/* Imagem do produto */}
       <div className={`w-full h-48 relative ${loading ? "opacity-0" : "opacity-100"}`}>
         <Image
-          src={`https://loja-online-back.onrender.com/${product.imageUrl}`}
+          src={imageUrl}
           alt={product.name}
           layout="fill"
           objectFit="contain"
@@ -52,9 +58,7 @@ const ProductItem: React.FC<ProductProps> = ({ product }) => {
       <div className="mt-4 text-gray-800 text-sm font-semibold">{product.name}</div>
       <div className="flex items-center space-x-2 mt-2">
         <span
-          className={`text-gray-500 ${
-            product.discount > 0 ? "line-through" : ""
-          }`}
+          className={`text-gray-500 ${product.discount > 0 ? "line-through" : ""}`}
         >
           R$ {product.price.toFixed(2)}
         </span>
