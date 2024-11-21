@@ -24,10 +24,9 @@ model Product {
   imageUrl  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  userId    Int?     // Associado opcionalmente a um usuário
-  user      User?    @relation(fields: [userId], references: [id]) // Relacionamento opcional
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id])
 }
-
 
 model BannerImage {
   id        Int      @id @default(autoincrement())
