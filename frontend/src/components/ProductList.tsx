@@ -34,9 +34,9 @@ const ProductList: React.FC = () => {
       
       const data = await response.json();
 
-      // Verifique se 'data' é um array antes de aplicar .sort
-      if (Array.isArray(data)) {
-        const shuffledProducts = data.sort(() => Math.random() - 0.5);
+      // Verifique se 'data.products' é um array antes de aplicar .sort
+      if (Array.isArray(data.products)) {
+        const shuffledProducts = data.products.sort(() => Math.random() - 0.5);
         setProducts(shuffledProducts);
         setFilteredProducts(shuffledProducts);
       } else {
