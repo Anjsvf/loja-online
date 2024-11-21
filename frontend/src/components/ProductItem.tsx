@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from 'next/image';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { FaSpinner } from "react-icons/fa";
 
 interface ProductProps {
@@ -32,7 +32,7 @@ const ProductItem: React.FC<ProductProps> = ({ product }) => {
       {/* Imagem do produto */}
       <div className={`w-full h-48 relative ${loading ? "opacity-0" : "opacity-100"}`}>
         <Image
-          src={`https://loja-online-back.onrender.com/${product.imageUrl}`}
+          src={`https://loja-online-back.onrender.com${product.imageUrl}`}
           alt={product.name}
           layout="fill"
           objectFit="contain"
