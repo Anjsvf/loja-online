@@ -32,8 +32,12 @@ export default function CleaningPage() {
         }
 
         const data = await response.json();
-        if (Array.isArray(data)) {
-          const filteredItems = data.filter(item => item.category === "Limpeza");
+        console.log("Dados retornados pela API:", data);
+
+        // Verifica se o retorno é um array, senão tenta acessar uma propriedade específica
+        const items = Array.isArray(data) ? data : data.products || [];
+        if (Array.isArray(items)) {
+          const filteredItems = items.filter(item => item.category === "Limpeza");
           setFoodItems(filteredItems);
         } else {
           console.error("Formato de dados inválido recebido da API.");
@@ -59,7 +63,6 @@ export default function CleaningPage() {
     );
   }
 
-  // Função para renderizar itens por nome específico
   const renderItemsByName = (name: string) => {
     return foodItems.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
   };
