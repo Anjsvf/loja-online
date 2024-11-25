@@ -23,9 +23,6 @@ const ProductItem: React.FC<ProductProps> = ({ product }) => {
   // Construção da URL da imagem sem barras extras
   const imageUrl = `https://loja-online-back.onrender.com${product.imageUrl.startsWith('/') ? '' : '/'}${product.imageUrl}`;
 
-  // Adicionando log para verificar a URL da imagem
-  console.log("URL da imagem:", imageUrl);
-
   return (
     <div className="relative bg-white rounded-lg shadow-lg p-4 flex flex-col justify-between h-full">
       {/* Spinner de carregamento */}
@@ -57,7 +54,7 @@ const ProductItem: React.FC<ProductProps> = ({ product }) => {
 
       {/* Nome e preços */}
       <div className="mt-4 flex-grow">
-        <div className="text-gray-800 text-sm font-semibold">{product.name}</div>
+        <div className="text-gray-800 text-sm font-semibold truncate">{product.name}</div>
         <div className="flex items-center space-x-2 mt-2">
           <span
             className={`text-gray-500 ${product.discount > 0 ? "line-through" : ""}`}
