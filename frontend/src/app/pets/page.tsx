@@ -1,8 +1,9 @@
+
 "use client";
 
 import { useEffect, useState } from 'react';
 import ProductItem from '../../components/ProductItem';
-import { FaSpinner } from 'react-icons/fa'; // Importa o ícone de carregamento
+import { FaSpinner } from 'react-icons/fa'; 
 
 type FoodItem = {
     id: number;
@@ -29,7 +30,7 @@ export default function PetsPage() {
                 if (response.ok) {
                     const data: FoodItem[] = await response.json();
                     
-                    // Filtra os itens da categoria 'alimento'
+                  
                     const filteredItems = data.filter(item => item.category === "Pets");
                     setFoodItems(filteredItems);
                 } else {
@@ -56,7 +57,7 @@ export default function PetsPage() {
         );
     }
 
-   
+    // Função para renderizar itens por nome específico
     const renderItemsByName = (name: string) => {
         return foodItems.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
     };
@@ -75,7 +76,7 @@ export default function PetsPage() {
             </section>
 
             <section className="mb-10">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Ração para cão filhotes</h2>
+                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Ração para cão Filhotes</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {renderItemsByName('Filhotes').map(item => (
                         <ProductItem key={item.id} product={item} />
@@ -84,7 +85,7 @@ export default function PetsPage() {
             </section>
 
             <section className="mb-10">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Raçaõ para gatos</h2>
+                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Gatos </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     {renderItemsByName('Gato').map(item => (
                         <ProductItem key={item.id} product={item} />

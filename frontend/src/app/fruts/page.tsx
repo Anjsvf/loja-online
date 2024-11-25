@@ -1,10 +1,12 @@
+
+
 "use client";
 
 import { useEffect, useState } from 'react';
 import ProductItem from '../../components/ProductItem';
-import { FaSpinner } from 'react-icons/fa'; // Importa o ícone de carregamento
+import { FaSpinner } from 'react-icons/fa'; 
 
-type FoodItem = {
+type FrutsItem = {
     id: number;
     name: string;
     category: string;
@@ -19,7 +21,7 @@ type FoodItem = {
 };
 
 export default function FrutsPage() {
-    const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
+    const [foodItems, setFoodItems] = useState<FrutsItem[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -27,9 +29,9 @@ export default function FrutsPage() {
             try {
                 const response = await fetch('https://loja-online-back.onrender.com/api/products/');
                 if (response.ok) {
-                    const data: FoodItem[] = await response.json();
+                    const data: FrutsItem[] = await response.json();
                     
-                    // Filtra os itens da categoria 'alimento'
+                  
                     const filteredItems = data.filter(item => item.category === "Frutas");
                     setFoodItems(filteredItems);
                 } else {
@@ -84,7 +86,7 @@ export default function FrutsPage() {
             </section>
 
             <section className="mb-10">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Uvas</h2>
+                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Uvas </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     {renderItemsByName('Uva').map(item => (
                         <ProductItem key={item.id} product={item} />

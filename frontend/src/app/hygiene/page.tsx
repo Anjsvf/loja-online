@@ -1,8 +1,9 @@
+
 "use client";
 
 import { useEffect, useState } from 'react';
 import ProductItem from '../../components/ProductItem';
-import { FaSpinner } from 'react-icons/fa'; // Importa o ícone de carregamento
+import { FaSpinner } from 'react-icons/fa'; 
 
 type FoodItem = {
     id: number;
@@ -29,7 +30,7 @@ export default function HygienePage() {
                 if (response.ok) {
                     const data: FoodItem[] = await response.json();
                     
-                   
+                  
                     const filteredItems = data.filter(item => item.category === "Higiene");
                     setFoodItems(filteredItems);
                 } else {
@@ -56,14 +57,14 @@ export default function HygienePage() {
         );
     }
 
-   
+    // Função para renderizar itens por nome específico
     const renderItemsByName = (name: string) => {
         return foodItems.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
     };
 
     return (
         <div className="food-page max-w-6xl mx-auto p-6">
-            <h1 className="text-3xl font-bold text-gray-800 mb-8">Higiene</h1>
+            <h1 className="text-3xl font-bold text-gray-800 mb-8">Alimentos</h1>
 
             <section className="mb-10">
                 <h2 className="text-2xl font-semibold text-gray-700 mb-4">Higiene bucal</h2>
@@ -75,7 +76,7 @@ export default function HygienePage() {
             </section>
 
             <section className="mb-10">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Sabonete</h2>
+                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Adoçantes</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {renderItemsByName('Sabonete').map(item => (
                         <ProductItem key={item.id} product={item} />
@@ -84,7 +85,7 @@ export default function HygienePage() {
             </section>
 
             <section className="mb-10">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-4">shampoo</h2>
+                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Shampoos </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     {renderItemsByName('Shampoo').map(item => (
                         <ProductItem key={item.id} product={item} />

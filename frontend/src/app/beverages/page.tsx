@@ -22,7 +22,7 @@ type FoodItem = {
 };
 
 export default function BeveragesPage() {
-  const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
+  const [beveragesItems, setBeveragesItems] = useState<FoodItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function BeveragesPage() {
         const items = Array.isArray(data) ? data : data.products || [];
         if (Array.isArray(items)) {
           const filteredItems = items.filter(item => item.category === "Bebidas");
-          setFoodItems(filteredItems);
+          setBeveragesItems(filteredItems);
         } else {
           console.error("Formato de dados inválido recebido da API.");
         }
@@ -67,7 +67,7 @@ export default function BeveragesPage() {
   }
 
   const renderItemsByName = (name: string) => {
-    return foodItems.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
+    return beveragesItems.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
   };
 
   return (

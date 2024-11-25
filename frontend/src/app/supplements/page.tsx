@@ -1,8 +1,10 @@
+
+
 "use client";
 
 import { useEffect, useState } from 'react';
 import ProductItem from '../../components/ProductItem';
-import { FaSpinner } from 'react-icons/fa'; // Importa o ícone de carregamento
+import { FaSpinner } from 'react-icons/fa'; 
 
 type FoodItem = {
     id: number;
@@ -29,7 +31,7 @@ export default function SupplementsPage() {
                 if (response.ok) {
                     const data: FoodItem[] = await response.json();
                     
-                    
+                  
                     const filteredItems = data.filter(item => item.category === "Suplementos");
                     setFoodItems(filteredItems);
                 } else {
@@ -56,7 +58,7 @@ export default function SupplementsPage() {
         );
     }
 
-  
+    // Função para renderizar itens por nome específico
     const renderItemsByName = (name: string) => {
         return foodItems.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
     };
@@ -66,7 +68,7 @@ export default function SupplementsPage() {
             <h1 className="text-3xl font-bold text-gray-800 mb-8">Suplementos</h1>
 
             <section className="mb-10">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Whey Proteines</h2>
+                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Wheys</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {renderItemsByName('Whey').map(item => (
                         <ProductItem key={item.id} product={item} />
@@ -75,7 +77,7 @@ export default function SupplementsPage() {
             </section>
 
             <section className="mb-10">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Proteinas</h2>
+                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Proteína</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {renderItemsByName('Proteína').map(item => (
                         <ProductItem key={item.id} product={item} />
@@ -84,7 +86,7 @@ export default function SupplementsPage() {
             </section>
 
             <section className="mb-10">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Vitamina</h2>
+                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Vitaminas</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                     {renderItemsByName('Vitamina').map(item => (
                         <ProductItem key={item.id} product={item} />

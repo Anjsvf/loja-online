@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import ProductItem from '../../components/ProductItem';
-import { FaSpinner } from 'react-icons/fa'; // Importa o ícone de carregamento
+import { FaSpinner } from 'react-icons/fa'; 
 
 type FoodItem = {
     id: number;
@@ -29,7 +29,7 @@ export default function FoodPage() {
                 if (response.ok) {
                     const data: FoodItem[] = await response.json();
                     
-                    // Filtra os itens da categoria 'alimento'
+                  
                     const filteredItems = data.filter(item => item.category === "Alimentos");
                     setFoodItems(filteredItems);
                 } else {
