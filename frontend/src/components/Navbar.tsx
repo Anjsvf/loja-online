@@ -28,7 +28,6 @@ const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
 
-  // Handlers
   const handleCategoryClick = (category: string) => {
     router.push(`/${category.toLowerCase()}`);
   };
@@ -36,6 +35,8 @@ const Navbar: React.FC = () => {
   const handleProfileClick = () => {
     router.push("/profile");
   };
+
+  const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
 
   return (
     <nav className="bg-[#ece9e9] shadow p-4">
@@ -47,14 +48,15 @@ const Navbar: React.FC = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-4">
           <FaUser
-            className="text-gray-600 cursor-pointer hover:text-blue-500"
+            className="text-gray-600 cursor-pointer hover:text-blue-500 transition"
             onClick={handleProfileClick}
+            aria-label="Go to profile"
           />
           <div className="flex items-center text-gray-600">
             <FaShoppingCart />
             <span className="ml-1">($0.00)</span>
           </div>
-          <button className="bg-green-500 px-4 py-2 text-white rounded-lg">
+          <button className="bg-green-500 px-4 py-2 text-white rounded-lg hover:bg-green-600 transition">
             CHECKOUT
           </button>
         </div>
@@ -62,7 +64,8 @@ const Navbar: React.FC = () => {
         {/* Mobile Menu Toggle */}
         <button
           className="md:hidden text-gray-600"
-          onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={toggleMobileMenu}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {isMobileMenuOpen ? "Close" : "Menu"}
         </button>
@@ -84,17 +87,43 @@ const Navbar: React.FC = () => {
           }}
           className="category-carousel"
         >
-          {[
-            { src: perecivel, label: "Perecíveis", category: "perishable" },
-            { src: alimentos, label: "Alimentos", category: "food" },
-            { src: limpeza, label: "Limpeza", category: "cleaning" },
-            { src: bebidas, label: "Bebidas", category: "beverages" },
-            { src: frutas, label: "Frutas", category: "fruts" },
-            { src: suplementos, label: "Suplementos", category: "supplements" },
-            { src: higiene, label: "Higiene", category: "hygiene" },
-            { src: pets, label: "Pets", category: "pets" },
-            { src: bebes, label: "Bebês", category: "baby" },
-          ].map(({ src, label, category }, index) => (
+          {[{
+            src: perecivel,
+            label: "Perecíveis",
+            category: "perishable"
+          }, {
+            src: alimentos,
+            label: "Alimentos",
+            category: "food"
+          }, {
+            src: limpeza,
+            label: "Limpeza",
+            category: "cleaning"
+          }, {
+            src: bebidas,
+            label: "Bebidas",
+            category: "beverages"
+          }, {
+            src: frutas,
+            label: "Frutas",
+            category: "fruits"
+          }, {
+            src: suplementos,
+            label: "Suplementos",
+            category: "supplements"
+          }, {
+            src: higiene,
+            label: "Higiene",
+            category: "hygiene"
+          }, {
+            src: pets,
+            label: "Pets",
+            category: "pets"
+          }, {
+            src: bebes,
+            label: "Bebês",
+            category: "baby"
+          }].map(({ src, label, category }, index) => (
             <SwiperSlide
               key={index}
               onClick={() => handleCategoryClick(category)}
@@ -105,23 +134,26 @@ const Navbar: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="swiper-button-prev absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gray-200 rounded-full cursor-pointer">
+        <button className="swiper-button-prev absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gray-200 rounded-full cursor-pointer">
           <FaArrowLeft className="text-gray-600" />
-        </div>
-        <div className="swiper-button-next absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gray-200 rounded-full cursor-pointer">
+        </button>
+        <button className="swiper-button-next absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gray-200 rounded-full cursor-pointer">
           <FaArrowRight className="text-gray-600" />
-        </div>
+        </button>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="flex flex-col items-center mt-4 space-y-2 text-gray-600">
-          <FaUser onClick={handleProfileClick} />
+          <FaUser
+            onClick={handleProfileClick}
+            aria-label="Go to profile"
+          />
           <div className="flex items-center">
             <FaShoppingCart />
             <span className="ml-1">($0.00)</span>
           </div>
-          <button className="bg-green-500 px-4 py-2 text-white rounded-lg">
+          <button className="bg-green-500 px-4 py-2 text-white rounded-lg hover:bg-green-600 transition">
             CHECKOUT
           </button>
         </div>
