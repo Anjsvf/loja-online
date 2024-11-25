@@ -11,6 +11,8 @@ import {
   FaTimes,
   FaShoppingCart,
   FaUser,
+  FaArrowLeft,
+  FaArrowRight,
 } from "react-icons/fa";
 
 import perecivel from "./images/pereciveis.png";
@@ -38,7 +40,7 @@ const Navbar: React.FC = () => {
   const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
 
   return (
-    <nav className="bg-blue-600 p-4 shadow-lg">
+    <nav className="bg-blue-500 p-4 shadow-lg">
       {/* Navbar Container */}
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
@@ -70,8 +72,8 @@ const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Category Carousel */}
-      <div className="relative mt-4">
+     
+      <div className="relative mt-2">
         <Swiper
           spaceBetween={10}
           slidesPerView={2}
@@ -102,11 +104,25 @@ const Navbar: React.FC = () => {
               onClick={() => handleCategoryClick(category)}
               className="cursor-pointer flex flex-col items-center text-center text-white"
             >
-              <Image src={src} alt={label} width={36} height={36} />
-              <span className="text-sm mt-2">{label}</span>
+              <div className="flex flex-col items-center">
+                <Image 
+                  src={src} 
+                  alt={label} 
+                  width={48} 
+                  height={48} 
+                  className="sm:w-12 sm:h-12 w-10 h-10"
+                />
+                <span className="text-sm mt-1 sm:text-xs">{label}</span>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
+        <button className="swiper-button-prev absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-yellow-500 rounded-full cursor-pointer">
+          <FaArrowLeft className="text-white" />
+        </button>
+        <button className="swiper-button-next absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-yellow-500 rounded-full cursor-pointer">
+          <FaArrowRight className="text-white" />
+        </button>
       </div>
 
       {/* Mobile Menu */}
