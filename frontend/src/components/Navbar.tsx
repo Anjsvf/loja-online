@@ -9,8 +9,6 @@ import Image from "next/image";
 import {
   FaBars,
   FaTimes,
-  FaArrowLeft,
-  FaArrowRight,
   FaShoppingCart,
   FaUser,
 } from "react-icons/fa";
