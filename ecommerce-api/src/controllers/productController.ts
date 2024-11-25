@@ -5,7 +5,7 @@ import fs from "fs";
 
 // Função para buscar todos os produtos com suporte à paginação
 export const getAllProducts = async (req: Request, res: Response) => {
-  const { page = 1, limit = 10 } = req.query; // Default: 10 produtos por página
+  const { page = 1, limit = 100 } = req.query; // Default: 10 produtos por página
   try {
     const products = await prisma.product.findMany({
       skip: (Number(page) - 1) * Number(limit),
