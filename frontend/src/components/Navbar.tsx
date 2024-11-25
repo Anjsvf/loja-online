@@ -6,8 +6,9 @@ import { Logo } from "../components/ui/logo";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import Image from "next/image";
-
 import {
+  FaBars,
+  FaTimes,
   FaArrowLeft,
   FaArrowRight,
   FaShoppingCart,
@@ -39,7 +40,7 @@ const Navbar: React.FC = () => {
   const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
 
   return (
-    <nav className="bg-[#ece9e9] shadow p-4">
+    <nav className="bg-blue-600 p-4 shadow-lg">
       {/* Navbar Container */}
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
@@ -48,26 +49,26 @@ const Navbar: React.FC = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-4">
           <FaUser
-            className="text-gray-600 cursor-pointer hover:text-blue-500 transition"
+            className="text-white cursor-pointer hover:text-yellow-300 transition"
             onClick={handleProfileClick}
             aria-label="Go to profile"
           />
-          <div className="flex items-center text-gray-600">
+          <div className="flex items-center text-white">
             <FaShoppingCart />
             <span className="ml-1">($0.00)</span>
           </div>
-          <button className="bg-green-500 px-4 py-2 text-white rounded-lg hover:bg-green-600 transition">
+          <button className="bg-yellow-500 px-4 py-2 text-white rounded-lg hover:bg-yellow-600 transition">
             CHECKOUT
           </button>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-gray-600"
+          className="md:hidden text-white"
           onClick={toggleMobileMenu}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
-          {isMobileMenuOpen ? "Close" : "Menu"}
+          {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
       </div>
 
@@ -87,73 +88,43 @@ const Navbar: React.FC = () => {
           }}
           className="category-carousel"
         >
-          {[{
-            src: perecivel,
-            label: "Perecíveis",
-            category: "perishable"
-          }, {
-            src: alimentos,
-            label: "Alimentos",
-            category: "food"
-          }, {
-            src: limpeza,
-            label: "Limpeza",
-            category: "cleaning"
-          }, {
-            src: bebidas,
-            label: "Bebidas",
-            category: "beverages"
-          }, {
-            src: frutas,
-            label: "Frutas",
-            category: "fruits"
-          }, {
-            src: suplementos,
-            label: "Suplementos",
-            category: "supplements"
-          }, {
-            src: higiene,
-            label: "Higiene",
-            category: "hygiene"
-          }, {
-            src: pets,
-            label: "Pets",
-            category: "pets"
-          }, {
-            src: bebes,
-            label: "Bebês",
-            category: "baby"
-          }].map(({ src, label, category }, index) => (
+          {[
+            { src: perecivel, label: "Perecíveis", category: "perishable" },
+            { src: alimentos, label: "Alimentos", category: "food" },
+            { src: limpeza, label: "Limpeza", category: "cleaning" },
+            { src: bebidas, label: "Bebidas", category: "beverages" },
+            { src: frutas, label: "Frutas", category: "fruits" },
+            { src: suplementos, label: "Suplementos", category: "supplements" },
+            { src: higiene, label: "Higiene", category: "hygiene" },
+            { src: pets, label: "Pets", category: "pets" },
+            { src: bebes, label: "Bebês", category: "baby" },
+          ].map(({ src, label, category }, index) => (
             <SwiperSlide
               key={index}
               onClick={() => handleCategoryClick(category)}
-              className="cursor-pointer flex flex-col items-center text-center"
+              className="cursor-pointer flex flex-col items-center text-center text-white"
             >
-              <Image src={src} alt={label} width={48} height={48} />
-              <span>{label}</span>
+              <Image src={src} alt={label} width={36} height={36} />
+              <span className="text-sm mt-2">{label}</span>
             </SwiperSlide>
           ))}
         </Swiper>
-        <button className="swiper-button-prev absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gray-200 rounded-full cursor-pointer">
-          <FaArrowLeft className="text-gray-600" />
-        </button>
-        <button className="swiper-button-next absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gray-200 rounded-full cursor-pointer">
-          <FaArrowRight className="text-gray-600" />
-        </button>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="flex flex-col items-center mt-4 space-y-2 text-gray-600">
+        <div className="flex flex-col items-center mt-4 space-y-2 text-white">
           <FaUser
             onClick={handleProfileClick}
             aria-label="Go to profile"
+            size={20}
+            className="cursor-pointer"
           />
           <div className="flex items-center">
-            <FaShoppingCart />
+            <FaShoppingCart size={20} />
             <span className="ml-1">($0.00)</span>
           </div>
-          <button className="bg-green-500 px-4 py-2 text-white rounded-lg hover:bg-green-600 transition">
+          <button className="bg-yellow-500 px-4 py-2 text-white rounded-lg hover:bg-yellow-600 transition">
             CHECKOUT
           </button>
         </div>
