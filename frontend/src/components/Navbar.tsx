@@ -11,8 +11,6 @@ import {
   FaTimes,
   FaShoppingCart,
   FaUser,
-  FaArrowLeft,
-  FaArrowRight,
 } from "react-icons/fa";
 
 import perecivel from "./images/pereciveis.png";
@@ -72,8 +70,58 @@ const Navbar: React.FC = () => {
         </button>
       </div>
 
-     
-      <div className="relative mt-2">
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden mt-4 space-y-2 text-white">
+          <div className="flex flex-col items-center">
+            <FaUser
+              onClick={handleProfileClick}
+              aria-label="Go to profile"
+              size={20}
+              className="cursor-pointer"
+            />
+            <span>Profile</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <FaShoppingCart size={20} />
+            <span className="ml-1">($0.00)</span>
+          </div>
+          <button className="bg-yellow-500 px-4 py-2 text-white rounded-lg hover:bg-yellow-600 transition">
+            CHECKOUT
+          </button>
+          <div className="grid grid-cols-3 gap-2 mt-4">
+            {[
+              { src: perecivel, label: "Perecíveis", category: "perishable" },
+              { src: alimentos, label: "Alimentos", category: "food" },
+              { src: limpeza, label: "Limpeza", category: "cleaning" },
+              { src: bebidas, label: "Bebidas", category: "beverages" },
+              { src: frutas, label: "Frutas", category: "fruits" },
+              { src: suplementos, label: "Suplementos", category: "supplements" },
+              { src: higiene, label: "Higiene", category: "hygiene" },
+              { src: pets, label: "Pets", category: "pets" },
+              { src: bebes, label: "Bebês", category: "baby" },
+            ].map(({ src, label, category }, index) => (
+              <div
+                key={index}
+                onClick={() => handleCategoryClick(category)}
+                className="cursor-pointer flex flex-col items-center text-center text-white"
+              >
+                <Image 
+                  src={src} 
+                  alt={label} 
+                  width={48} 
+                  height={48} 
+                  className="sm:w-12 sm:h-12 w-10 h-10"
+                />
+                <span className="text-sm mt-1 sm:text-xs">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Category Carousel for Desktop */}
+      <div className="hidden md:flex relative mt-2">
         <Swiper
           spaceBetween={10}
           slidesPerView={2}
@@ -117,32 +165,7 @@ const Navbar: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <button className="swiper-button-prev absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-yellow-500 rounded-full cursor-pointer">
-          <FaArrowLeft className="text-white" />
-        </button>
-        <button className="swiper-button-next absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-yellow-500 rounded-full cursor-pointer">
-          <FaArrowRight className="text-white" />
-        </button>
       </div>
-
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="flex flex-col items-center mt-4 space-y-2 text-white">
-          <FaUser
-            onClick={handleProfileClick}
-            aria-label="Go to profile"
-            size={20}
-            className="cursor-pointer"
-          />
-          <div className="flex items-center">
-            <FaShoppingCart size={20} />
-            <span className="ml-1">($0.00)</span>
-          </div>
-          <button className="bg-yellow-500 px-4 py-2 text-white rounded-lg hover:bg-yellow-600 transition">
-            CHECKOUT
-          </button>
-        </div>
-      )}
     </nav>
   );
 };
