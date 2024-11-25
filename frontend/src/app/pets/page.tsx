@@ -71,7 +71,7 @@ export default function PetsPage() {
 
   return (
     <div className="food-page max-w-6xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">pets</h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-8">Pets</h1>
 
       <section className="mb-10">
         <h2 className="text-2xl font-semibold text-gray-700 mb-4">Cães adultos</h2>
