@@ -3,18 +3,14 @@ import { Logo } from "./ui/logo";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8">
-      {/* Container */}
+    <footer className="bg-gray-800 text-white py-8 mt-auto">
       <div className="container mx-auto flex flex-col items-center space-y-4">
-        {/* Logo */}
         <Logo size={100} />
 
-        {/* Company Information */}
         <div className="text-center">
-          <p className="font-semibold text-lg">YMARY Comércio Alimentício LTDA</p>
+          <p className="font-semibold text-lg">YMARY Comércio LTDA</p>
         </div>
 
-        {/* Links */}
         <div className="flex flex-wrap justify-center space-x-4 text-sm text-gray-300">
           <a href="#social-media" className="hover:text-white">
             Redes Sociais
@@ -30,7 +26,6 @@ const Footer: React.FC = () => {
           </a>
         </div>
 
-        {/* Payment Methods */}
         <div className="text-center text-sm text-gray-300">
           <p className="font-semibold">Meios de pagamento aceitos:</p>
           <p>

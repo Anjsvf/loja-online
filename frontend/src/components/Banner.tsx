@@ -60,10 +60,10 @@ const Banner: React.FC = () => {
 
   return (
     <div
-      className="relative text-white text-center h-64 md:h-96 flex flex-col justify-center items-center"
+      className="relative text-white text-center h-64 md:h-96 flex flex-col justify-center items-center py-8"
       style={{
         backgroundImage: `url(${imageUrl})`,
-        backgroundSize: "contain", // Ajusta para conter toda a imagem no fundo
+        backgroundSize: "contain", 
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}

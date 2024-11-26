@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
   const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
 
   return (
-    <nav className="bg-blue-500 p-4 shadow-lg">
+    <nav className="bg-gray-800 p-4 shadow-lg">
       {/* Navbar Container */}
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
